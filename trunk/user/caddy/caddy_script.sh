@@ -35,12 +35,13 @@ if [ "$caddy_mode" = "0" ] || [ "$caddy_mode" = "1" ] || [ "$caddy_mode" = "2" ]
 logger -t "【caddy】" "创建caddy_filebrowser的browser文件服务器配置..."
 if [ "$caddy_mode" = "0" ] || [ "$caddy_mode" = "2" ] ; then
 cat <<-EOF >/tmp/cf
-:$caddyf_wan_port {
- root $caddy_browser_path
- timeouts none
- gzip
- filebrowser / $caddy_browser_path {
-  database /etc/storage/caddy_filebrowser.db
+
+:$caddy_browser_port {
+   root $caddy_browser_path
+   timeouts none
+   gzip
+   filebrowser / $caddy_browser_path {
+    database /etc/storage/caddy_filebrowser.db
  }
 }
 EOF
@@ -50,12 +51,12 @@ if [ "$caddy_mode" = "1" ] || [ "$caddy_mode" = "2" ] ; then
 logger -t "【caddy】" "创建caddy_filebrowser的WebDav配置..."
 cat <<-EOF >/tmp/cw
 :$caddyw_wan_port {
-root $caddy_webdav_path
-timeouts none
-browse
-gzip
-filebrowser /document $caddy_webdav_path {
-  database /etc/storage/caddy_filebrowser.db
+    root $caddy_webdav_path
+    timeouts none
+    browse
+    gzip
+    filebrowser /document $caddy_webdav_path {
+     database /etc/storage/caddy_filebrowser.db
 }
 basicauth / $caddy_wname $caddy_wpassword
 webdav /disk {
@@ -89,8 +90,8 @@ cat <<-EOF >/tmp/cf
 
 :$caddy_browser_port {
 $filebasicauth
- root * $caddy_browser_path
- file_server browse
+    root * $caddy_browser_path
+    file_server browse
  
 }
 
