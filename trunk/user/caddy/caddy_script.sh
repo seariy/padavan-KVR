@@ -7,12 +7,12 @@ caddy=`nvram get caddy_dir`
 #程序选择
 caddy_mode=`nvram get caddy_file`
 #browser文件服务器端口
-caddy_browser_port=`nvram get caddyf_wan_port`
+caddy_browser_port=`nvram get caddyf_browser_port`
 [ -z "$caddy_browser_port" ] && caddy_browser_port="12101" && nvram set caddyf_wan_port=$caddy_browser_port
 #browser文件服务器用户名
-caddy_fname=`nvram get caddy_Fname`
+#caddy_fname=`nvram get caddy_Fname`
 #browser文件服务器密码
-caddy_fpassword=`nvram get caddy_Fpassword`
+#caddy_fpassword=`nvram get caddy_Fpassword`
 
 #webdav目录
 caddy_webdav_path=`nvram get caddy_webdav`
@@ -20,9 +20,9 @@ caddy_webdav_path=`nvram get caddy_webdav`
 caddyw_wan_port=`nvram get caddyw_wan_port`
 [ -z "$caddyw_wan_port" ] && caddyw_wan_port="12102" && nvram set caddyw_wan_port=$caddyw_wan_port
 #webdav用户名
-caddy_wname=`nvram get caddy_wname`
+#caddy_wname=`nvram get caddy_wname`
 #webdav密码
-caddy_wpassword=`nvram get caddy_wpassword`
+#caddy_wpassword=`nvram get caddy_wpassword`
 
 #生成的配置文件路径
 caddyfile="/tmp/Caddyfile"
@@ -79,12 +79,12 @@ if [ "$caddy_mode" = "3" ] || [ "$caddy_mode" = "4" ] || [ "$caddy_mode" = "5" ]
 #配置browser文件服务器
 if [ "$caddy_mode" = "3" ] || [ "$caddy_mode" = "5" ] ; then
 logger -t "【caddy】" "创建caddy的browser文件服务器配置..."
-if [ ! -z "$caddy_fname" ] && [ ! -z "$caddy_fpassword" ] ; then
-	      filepassword="$($caddy hash-password --plaintext $caddy_fpassword)"
-	      filebasicauth="basicauth {
-$caddy_fname $filepassword
-}"
-fi
+#if [ ! -z "$caddy_fname" ] && [ ! -z "$caddy_fpassword" ] ; then
+#	      filepassword="$($caddy hash-password --plaintext $caddy_fpassword)"
+#	      filebasicauth="basicauth {
+#$caddy_fname $filepassword
+#}"
+#fi
 cat <<-EOF >/tmp/cf
 
 :$caddy_browser_port {
