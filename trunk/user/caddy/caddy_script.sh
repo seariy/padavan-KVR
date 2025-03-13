@@ -8,7 +8,7 @@ caddy=`nvram get caddy_dir`
 caddy_mode=`nvram get caddy_file`
 #browser文件服务器端口
 caddy_browser_port=`nvram get caddyf_browser_port`
-[ -z "$caddy_browser_port" ] && caddy_browser_port="12101" && nvram set caddyf_wan_port=$caddy_browser_port
+[ -z "$caddy_browser_port" ] && caddy_browser_port="12321" && nvram set caddyf_wan_port=$caddy_browser_port
 #browser文件服务器用户名
 #caddy_fname=`nvram get caddy_Fname`
 #browser文件服务器密码
@@ -18,7 +18,7 @@ caddy_browser_port=`nvram get caddyf_browser_port`
 caddy_webdav_path=`nvram get caddy_webdav`
 #webdav端口
 caddyw_wan_port=`nvram get caddyw_wan_port`
-[ -z "$caddyw_wan_port" ] && caddyw_wan_port="12102" && nvram set caddyw_wan_port=$caddyw_wan_port
+[ -z "$caddyw_wan_port" ] && caddyw_wan_port="12322" && nvram set caddyw_wan_port=$caddyw_wan_port
 #webdav用户名
 #caddy_wname=`nvram get caddy_wname`
 #webdav密码
